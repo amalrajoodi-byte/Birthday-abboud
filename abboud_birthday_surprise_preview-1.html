@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4b1025">
+<title>Happy Birthday, Abboud ❤️</title>
+<style>
+:root{--wine:#4b1025;--wine2:#6c1d3b;--rose:#d98b9b;--pink:#f3cbd2;--cream:#fff1e5;--ink:#54263a}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at top,#7b2a48 0%,#4b1025 48%,#260812 100%);overflow-x:hidden}
+main{position:relative;z-index:1;width:min(100%,520px);margin:auto;padding:34px 20px 50px;text-align:center}
+.kicker{letter-spacing:3px;text-transform:uppercase;font:11px Arial,sans-serif;color:#f3cbd2}
+h1{font-size:clamp(34px,9vw,49px);line-height:1.06;margin:12px 0;color:var(--cream);font-weight:normal}
+.subtitle{font:14px/1.6 Arial,sans-serif;color:#f5dce1;max-width:330px;margin:0 auto 28px}
+.glow{filter:drop-shadow(0 0 18px #eaa2b866)}
+.envelope-wrap{display:flex;justify-content:center;margin:28px auto 18px;perspective:800px}
+.envelope{position:relative;width:270px;height:175px;border:0;background:transparent;cursor:pointer;padding:0;filter:drop-shadow(0 14px 18px #18040c66);transition:transform .25s}
+.envelope:hover{transform:translateY(-4px)}
+.env-back{position:absolute;inset:0;background:#f8dfd7;border-radius:9px}
+.env-paper{position:absolute;left:17px;right:17px;bottom:12px;height:135px;background:#fff8ee;color:var(--ink);border-radius:5px;padding:18px 10px;transition:transform .7s ease;z-index:1;font-size:20px}
+.env-front{position:absolute;inset:0;background:#e8b8bd;clip-path:polygon(0 100%,0 0,50% 58%,100% 0,100% 100%);border-radius:0 0 9px 9px;z-index:2}
+.env-flap{position:absolute;inset:0;background:#f4cbd0;clip-path:polygon(0 0,100% 0,50% 61%);transform-origin:top;transition:transform .6s;z-index:3}
+.seal{position:absolute;z-index:4;left:50%;top:54%;transform:translate(-50%,-50%);width:43px;height:43px;border-radius:50%;background:var(--wine);display:grid;place-items:center;color:#ffe8e9;font-size:22px;box-shadow:0 3px 9px #4b102566;transition:opacity .3s}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .env-paper{transform:translateY(-88px);z-index:4}
+.envelope.open .seal{opacity:0}
+.tap-hint{font:12px Arial,sans-serif;color:#efc9d3;letter-spacing:1px;margin-bottom:24px}
+.letter{display:none;text-align:left;background:var(--cream);color:var(--ink);border-radius:18px;padding:24px 22px;margin:22px 0;box-shadow:0 12px 32px #18040c44;animation:fade .7s}
+.letter.show{display:block}
+.letter h2{text-align:center;font-size:27px;font-weight:normal;margin:0 0 16px}
+.letter p{font-size:16px;line-height:1.8;margin:0 0 12px}
+.signature{text-align:right;font-style:italic;margin-top:20px!important}
+.section-title{font-size:24px;font-weight:normal;margin:30px 0 12px}
+.notes{display:grid;gap:10px}
+.note-btn,.song-btn{border:1px solid #e6a5b4;background:#69213b;color:#fff3eb;border-radius:14px;padding:14px 15px;font:14px Arial,sans-serif;cursor:pointer;transition:background .2s,transform .2s}
+.note-btn:hover,.song-btn:hover{background:#85304f;transform:translateY(-2px)}
+.note{display:none;background:#fff1e5;color:#54263a;border-radius:12px;padding:14px;margin-top:8px;font-size:15px;line-height:1.6}
+.note.show{display:block;animation:fade .4s}
+.song-card{margin-top:24px;padding:20px 16px;background:#fff1e510;border:1px solid #e6a5b455;border-radius:18px}
+.song-icon{font-size:32px;margin-bottom:7px}
+.song-title{font-size:20px;margin:5px 0;color:#fff1e5}
+.song-artist{font:13px Arial,sans-serif;color:#efc9d3;margin-bottom:14px}
+.song-btn{display:inline-block;text-decoration:none;padding:13px 18px}
+.small{font:11px/1.6 Arial,sans-serif;color:#e8bdc8;margin-top:28px}
+.heart{position:fixed;bottom:-30px;color:#f3aebb;pointer-events:none;animation:floatUp linear forwards;z-index:0;opacity:.75}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:360px){main{padding:28px 14px}.envelope{transform:scale(.92)}.envelope:hover{transform:scale(.92) translateY(-4px)}}
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">A little surprise, made with love</div>
+  <h1>Happy Birthday,<br>Abboud <span class="glow">♡</span></h1>
+  <p class="subtitle">A little place for a very special person.<br>Tap the envelope to open your surprise.</p>
+
+  <div class="envelope-wrap">
+    <button class="envelope" id="envelope" aria-label="Open your birthday letter" onclick="openLetter()">
+      <div class="env-back"></div>
+      <div class="env-paper">For you, with love ♡</div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="seal">♥</div>
+    </button>
+  </div>
+  <div class="tap-hint" id="tapHint">TAP TO OPEN YOUR LETTER</div>
+
+  <section class="letter" id="letter">
+    <h2>To someone special ♡</h2>
+    <p>Happy birthday to someone who means so much to me. ❤️</p>
+    <p>I hope this new year of your life brings you peace, happiness, success, and all the beautiful things your heart deserves.</p>
+    <p>Even on the busiest days, some people keep a special place in our hearts. You are one of those people.</p>
+    <p>I made this little surprise just for you, hoping it brings a smile to your face and reminds you that someone is wishing you the very best, today and always.</p>
+    <p>You deserve every good thing life has to offer. Keep shining, keep dreaming, and never forget how special you are.</p>
+    <p class="signature">Happy Birthday, Abboud. ✨</p>
+  </section>
+
+  <h2 class="section-title">A few little reminders ♡</h2>
+  <div class="notes">
+    <div><button class="note-btn" onclick="toggleNote(0)">♡ Open when you need a smile</button><div class="note" id="note0">I hope something good finds you today. And if today feels heavy, remember that brighter days are still waiting for you. ❤️</div></div>
+    <div><button class="note-btn" onclick="toggleNote(1)">♡ Open when you need encouragement</button><div class="note" id="note1">I believe in your dreams and in the person you are becoming. Take your time, keep going, and be proud of every little step.</div></div>
+    <div><button class="note-btn" onclick="toggleNote(2)">♡ One last little wish</button><div class="note" id="note2">May this year bring you reasons to laugh, moments to remember, success you can be proud of, and a heart that feels at peace. ✨</div></div>
+  </div>
+
+  <div class="song-card">
+    <div class="song-icon">♫</div>
+    <div class="kicker">A song for this little moment</div>
+    <div class="song-title">حبه جنة</div>
+    <div class="song-artist">Sherine · شيرين</div>
+    <a class="song-btn" href="https://www.youtube.com/results?search_query=%D8%B4%D9%8A%D8%B1%D9%8A%D9%86+%D8%AD%D8%A8%D9%87+%D8%AC%D9%86%D8%A9" target="_blank" rel="noopener">Play the song ♡</a>
+    <p class="small">Tap the button to find the song on YouTube. Music may open in a new tab.</p>
+  </div>
+  <p class="small">Made especially for you, Abboud. ♡<br>A little birthday surprise filled with warm wishes.</p>
+</main>
+<script>
+function openLetter(){
+  document.getElementById('envelope').classList.add('open');
+  document.getElementById('letter').classList.add('show');
+  document.getElementById('tapHint').textContent='A LITTLE MESSAGE, JUST FOR YOU ♡';
+}
+function toggleNote(n){
+  const el=document.getElementById('note'+n);
+  el.classList.toggle('show');
+}
+function makeHeart(){
+  const h=document.createElement('div');h.className='heart';h.textContent=Math.random()>.45?'♥':'♡';
+  h.style.left=Math.random()*100+'vw';h.style.fontSize=(12+Math.random()*17)+'px';
+  h.style.animationDuration=(7+Math.random()*7)+'s';document.body.appendChild(h);
+  setTimeout(()=>h.remove(),15000);
+}
+setInterval(makeHeart,850);
+</script>
+</body>
+</html>
